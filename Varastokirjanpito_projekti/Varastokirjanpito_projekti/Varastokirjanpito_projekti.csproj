@@ -140,6 +140,9 @@
 	  <MauiXaml Update="Pages\CreateUser.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\DeleteUser.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\EditBook.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
