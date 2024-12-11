@@ -7,15 +7,15 @@
     <StackLayout 
         Padding="30,0"
         Spacing="25">
-        
-        <Entry Placeholder="Author" Text="{Binding Author}" />
+
         <Label Text="Kirjailija" VerticalOptions="Start" FontSize="20" />
-        <Entry Placeholder="Title" Text="{Binding Title}" />
+        <Entry Placeholder="Author" Text="{Binding Author}" />
         <Label Text="Kirjan nimi" VerticalOptions="Start" FontSize="20" />
-        <Entry Placeholder="Count" Text="{Binding Count}" />
+        <Entry Placeholder="Title" Text="{Binding Title}" />
         <Label Text="Määrä" VerticalOptions="Start" FontSize="20" />
-        <Entry Placeholder="Price" Text="{Binding Price}" />
+        <Entry Placeholder="Count" Text="{Binding Count}" />
         <Label Text="Hinta €" VerticalOptions="Start" FontSize="20" />
+        <Entry Placeholder="Price" Text="{Binding Price}" />
 
         <Label
             Text="Lisätietoja:"
