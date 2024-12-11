@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls;
-using Varastokirjanpito_projekti.Pages;
+﻿using Varastokirjanpito_projekti.Pages;
 
 namespace Varastokirjanpito_projekti
 {

@@ -1,7 +1,5 @@
-using Newtonsoft.Json;
 using SharedModels;
 using System.Collections.ObjectModel;
-using System.Globalization;
 
 namespace Varastokirjanpito_projekti.Pages;
 

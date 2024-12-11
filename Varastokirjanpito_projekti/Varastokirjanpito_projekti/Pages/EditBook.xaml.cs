@@ -1,8 +1,4 @@
-using Microsoft.Maui.Controls;
-using Newtonsoft.Json;
 using SharedModels;
-using System.Diagnostics;
-using System.Text;
 
 namespace Varastokirjanpito_projekti.Pages
 {

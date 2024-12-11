@@ -7,7 +7,5 @@
         public string User { get; set; }
         public string LossOrSold { get; set; }
         public string Notes { get; set; }
-
     }
 }
-

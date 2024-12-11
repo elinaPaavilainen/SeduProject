@@ -1,9 +1,6 @@
 ﻿using System.Text;
 using Newtonsoft.Json;
 using SharedModels;
-using System.Diagnostics;
-using Android.AdServices.AdSelection;
-
 
 public class ApiService
 {

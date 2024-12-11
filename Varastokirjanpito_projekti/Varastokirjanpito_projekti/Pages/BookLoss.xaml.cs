@@ -1,6 +1,4 @@
-using Microsoft.Maui.Controls;
 using SharedModels;
-using System.Globalization;
 
 namespace Varastokirjanpito_projekti.Pages
 {

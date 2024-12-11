@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using BookStackAPI.Data;
 using BookStackAPI.Models;
 using Microsoft.EntityFrameworkCore;

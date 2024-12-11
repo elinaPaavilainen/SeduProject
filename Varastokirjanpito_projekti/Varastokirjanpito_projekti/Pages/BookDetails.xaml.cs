@@ -1,6 +1,4 @@
-using Microsoft.Maui.Controls;
 using SharedModels;
-using Newtonsoft.Json;
 
 namespace Varastokirjanpito_projekti.Pages; 
 public partial class BookDetails : ContentPage
