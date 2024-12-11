@@ -8,21 +8,15 @@
 
         <Button 
             Text="Lisää tuote"
-            Clicked="AddProduct"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            Clicked="AddProduct" />
 
         <Button 
             Text="Tuotteet"
-            Clicked="GetProducts"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            Clicked="GetProducts" />
 
         <Button 
             Text="Vaihda salasana"
-            Clicked="ChangePassword"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            Clicked="ChangePassword" />
 
     </VerticalStackLayout>
 </ContentPage>

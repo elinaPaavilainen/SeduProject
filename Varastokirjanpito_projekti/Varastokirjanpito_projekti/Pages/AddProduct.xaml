@@ -14,11 +14,11 @@
 
             <Entry
                  x:Name="Author"
-                 Placeholder="Kirjailijan nimi"
+                 Placeholder="Sukunimi, Etunimi"
                  HorizontalOptions="Center" />
 
             <Label 
-                Text="Kirjan nimi"
+                Text="Kirjan"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
 
