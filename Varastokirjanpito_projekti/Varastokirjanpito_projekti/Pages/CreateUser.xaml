@@ -40,45 +40,6 @@
                 VerticalOptions="Center"    
                 HorizontalOptions="Center" />
         
-            <Label
-                Text="Poista käyttäjä"
-                VerticalOptions="Center"    
-                HorizontalOptions="Center" />
-        
-            <Entry
-                x:Name="SearchUser"
-                Placeholder="Kirjoita hakusana"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center" />
-
-            <Button
-                Text="Hae"
-                Clicked="SearchUserClicked"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center" />
-            <Label
-                x:Name="InfoLabel"
-                Text=""
-                VerticalOptions="Center"    
-                HorizontalOptions="Center" />
-
-            <ListView x:Name="UsersListView">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Orientation="Vertical" Padding="10" BackgroundColor="LightGray" HorizontalOptions="Start" VerticalOptions="Center">
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OnUserTapped" CommandParameter="{Binding .}" />
-                                </StackLayout.GestureRecognizers>
-
-                                <Label 
-                                    Text="{Binding Username}" />
-
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
