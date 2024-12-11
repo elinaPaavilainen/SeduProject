@@ -18,7 +18,7 @@
                  HorizontalOptions="Center" />
 
             <Label 
-                Text="Kirjan"
+                Text="Kirjan nimi"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
 

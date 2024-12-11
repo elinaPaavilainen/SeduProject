@@ -10,10 +10,14 @@
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <Style TargetType="Label">
+                <Setter Property="TextColor" Value="Black" />
                 <Setter Property="FontFamily" Value="Arial" />
                 <Setter Property="FontSize" Value="26" />
             </Style>
             <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="LightSkyBlue" />
+                <Setter Property="BorderColor" Value="Black" />
+                <Setter Property="TextColor" Value="Black" />
                 <Setter Property="FontFamily" Value="Arial" />
                 <Setter Property="FontSize" Value="26" />
             </Style>
