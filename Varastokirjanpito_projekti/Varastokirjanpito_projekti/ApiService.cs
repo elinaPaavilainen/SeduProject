@@ -105,13 +105,13 @@ public class ApiService
         return await response.Content.ReadAsStringAsync();
     }
 
-   // GET list by username
-    public async Task<IEnumerable<Users>> DeleteGetUsersControllerDataByUsernameAsync(string username)
+    // GET list by username
+    public async Task<Users> DeleteGetUsersControllerDataByUsernameAsync(string username) 
     {
         var response = await _httpClient.GetAsync($"api/Users/{username}");
         response.EnsureSuccessStatusCode();
         var json = await response.Content.ReadAsStringAsync();
-        return JsonConvert.DeserializeObject<IEnumerable<Users>>(json);
+        return JsonConvert.DeserializeObject<Users>(json); 
     }
 
     //GET, search

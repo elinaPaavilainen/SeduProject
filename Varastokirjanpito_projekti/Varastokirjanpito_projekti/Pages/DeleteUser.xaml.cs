@@ -43,7 +43,26 @@ public partial class DeleteUser : ContentPage
         }
     }
     private async void OnUserTapped(object sender, EventArgs e)
-    {
-        InfoLabel.Text = "Clicked";
+    { 
+        var user = (Users)((TappedEventArgs)e).Parameter;
+        bool answer = await DisplayAlert("Poista käyttäjä", $"Haluatko poistaa käyttäjän {user.Username}?", "Kyllä", "Peruuta"); 
+        if (answer) 
+        {
+            try 
+            {
+                var deletedUser = await _apiService.DeleteGetUsersControllerDataByUsernameAsync(user.Username);
+                if (deletedUser != null) 
+                {
+                    UsersList.Remove(user);
+                    InfoLabel.Text = $"Käyttäjä {user.Username} poistettu."; 
+                }
+                else { InfoLabel.Text = "Käyttäjää ei löytynyt tai poistaminen epäonnistui."; 
+                }
+            }
+            catch (Exception ex) 
+            {
+                InfoLabel.Text = $"Error: {ex.Message}"; 
+            }
+        }
     }
 }
