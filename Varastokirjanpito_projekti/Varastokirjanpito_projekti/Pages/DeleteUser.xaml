@@ -1,12 +1,50 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Varastokirjanpito_projekti.Pages.DeleteUser"
-             Title="DeleteUser">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             x:Class="Varastokirjanpito_projekti.Pages.DeleteUser">
+    <ScrollView>
+        <VerticalStackLayout
+                Padding="30,0"
+                Spacing="25">
+           <Label
+                Text="Hae käyttäjää. Jos haluat nähdä kaikki käyttäjät, jätä hakukenttä tyhjäksi."
+                VerticalOptions="Center"    
+                HorizontalOptions="Center" />
+
+            <Entry
+                x:Name="SearchUser"
+                Placeholder="Kirjoita hakusana"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
+            <Button
+                Text="Hae"
+                Clicked="SearchUserClicked"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+            <Label
+                x:Name="InfoLabel"
+                Text=""
+                VerticalOptions="Center"    
+                HorizontalOptions="Center" />
+
+            <ListView x:Name="UsersListView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical" Padding="10" BackgroundColor="LightGray" HorizontalOptions="Start" VerticalOptions="Center">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnUserTapped" CommandParameter="{Binding .}" />
+                                </StackLayout.GestureRecognizers>
+
+                                <Label 
+                                    Text="{Binding Username}" />
+
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
