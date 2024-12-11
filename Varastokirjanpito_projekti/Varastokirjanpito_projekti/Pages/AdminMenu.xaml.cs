@@ -24,7 +24,7 @@ public partial class AdminMenu : ContentPage
 
     private async void ControlUsers(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new CreateUser());
+        await Navigation.PushAsync(new UserControl());
     }
 
     private async void ChangePassword(object sender, EventArgs e)
