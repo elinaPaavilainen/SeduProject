@@ -5,7 +5,10 @@
     x:Class="Varastokirjanpito_projekti.Pages.BookDetails">
 
     <ScrollView>
-        <StackLayout Padding="10">
+        <StackLayout 
+            Padding="30,0"
+            Spacing="25">
+            
             <Label>
                 <Label.FormattedText>
                     <FormattedString>

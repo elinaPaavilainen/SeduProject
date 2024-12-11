@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Varastokirjanpito_projekti.Pages.BookLoss">
     
-    <VerticalStackLayout>
+    <VerticalStackLayout
+        Padding="30,0"
+        Spacing="25">
         <Label 
             Text="Poiston lisätiedot (ei pakollinen)"
             VerticalOptions="Center" 
