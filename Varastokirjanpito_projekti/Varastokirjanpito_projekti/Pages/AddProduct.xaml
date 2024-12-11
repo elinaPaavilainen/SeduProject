@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Varastokirjanpito_projekti.Pages.AddProduct">
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+        
+            <Label 
+                Text="Kirjailija"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
+            <Entry
+                 x:Name="Author"
+                 Placeholder="Kirjailijan nimi"
+                 HorizontalOptions="Center" />
+
+            <Label 
+                Text="Kirjan nimi"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
+            <Entry
+                 x:Name="Title"
+                 Placeholder="Kirjan nimi"
+                 HorizontalOptions="Center" />
+
+            <Label 
+                Text="Tuotteiden määrä"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
+            <Entry
+                 x:Name="ProductCount"
+                 Placeholder="Tuotteiden määrä"
+                 HorizontalOptions="Center" />
+
+            <Label 
+                Text="Tuotteen hinta/kpl"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
+            <Entry
+                 x:Name="ProductPrice"
+                 Placeholder="Hinta"
+                 HorizontalOptions="Center" />
+
+            <Label
+                Text="Lisätietoja:"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
+            <Entry
+                x:Name="AdditionalInfo"
+                Text=""
+                Placeholder="Esim. alennettu hintaa"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
+            <Button
+                  x:Name="Save"
+                  Text="Tallenna"
+                  Clicked="ProductAdded"
+                  HorizontalOptions="Center" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

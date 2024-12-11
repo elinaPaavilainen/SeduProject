@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Varastokirjanpito_projekti.Pages.Products">
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+        
+            <Label 
+                Text="Kirjoita hakusana. Jos haluat nähdä koko varaston, paina 'Hae' ilman hakusanaa."
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+        
+            <Entry
+                x:Name="Search"
+                Placeholder="Kirjoita hakusana"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+        
+            <Button
+                x:Name="SearchButton"
+                Text="Hae"
+                Clicked="SearchButtonClicked"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
+            <Label 
+                x:Name="Result"
+                Text=""
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
+            <ListView x:Name="BooksListView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical" Padding="10" BackgroundColor="LightGray" HorizontalOptions="Start" VerticalOptions="Center">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnBookTapped" CommandParameter="{Binding .}" />
+                                </StackLayout.GestureRecognizers>
+
+                                <Label LineBreakMode="TailTruncation">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding Author}" />
+                                            <Span Text=": " />
+                                            <Span Text="{Binding Title}" />
+                                            <Span Text=" " />
+                                            <Span Text="{Binding Count}" />
+                                            <Span Text="kpl" />
+                                            <Span Text=" " />
+                                            <Span Text="{Binding Price}" />
+                                            <Span Text="€/kpl" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

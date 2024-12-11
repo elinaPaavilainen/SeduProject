@@ -1,0 +1,175 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net9.0-android;</TargetFrameworks>
+		<!-- Original <TargetFrameworks>net9.0-android;net9.0-ios;net9.0-maccatalyst</TargetFrameworks>-->
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net9.0-windows10.0.19041.0</TargetFrameworks>
+		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
+		<!-- <TargetFrameworks>$(TargetFrameworks);net9.0-tizen</TargetFrameworks> -->
+
+		<!-- Note for MacCatalyst:
+		The default runtime is maccatalyst-x64, except in Release config, in which case the default is maccatalyst-x64;maccatalyst-arm64.
+		When specifying both architectures, use the plural <RuntimeIdentifiers> instead of the singular <RuntimeIdentifier>.
+		The Mac App Store will NOT accept apps with ONLY maccatalyst-arm64 indicated;
+		either BOTH runtimes must be indicated or ONLY macatalyst-x64. -->
+		<!-- For example: <RuntimeIdentifiers>maccatalyst-x64;maccatalyst-arm64</RuntimeIdentifiers> -->
+
+		<OutputType>Exe</OutputType>
+		<RootNamespace>Varastokirjanpito_projekti</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+
+		<!-- Display name -->
+		<ApplicationTitle>Varastokirjanpito_projekti</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.companyname.varastokirjanpito_projekti</ApplicationId>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<!-- To develop, package, and publish an app to the Microsoft Store, see: https://aka.ms/MauiTemplateUnpackaged -->
+		<WindowsPackageType>None</WindowsPackageType>
+
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">15.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+		<AndroidSigningKeyStore>my-release-key.jks</AndroidSigningKeyStore>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-android|AnyCPU'">
+	  <AndroidKeyStore>True</AndroidKeyStore>
+	  <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
+	  <AndroidSigningStorePass>ukkonen</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>my-key-alias</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>ukkonen</AndroidSigningKeyPass>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-android|AnyCPU'">
+	  <AndroidKeyStore>True</AndroidKeyStore>
+	  <AndroidSigningStorePass>ukkonen</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>my-key-alias</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>ukkonen</AndroidSigningKeyPass>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\xml\network_security_config.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <AndroidResource Include="Resources\xml\network_security_config.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.10" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="System.Private.Uri" Version="4.3.2" />
+		<PackageReference Include="System.Text.Encodings.Web" Version="9.0.0" />
+
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Resources\Images\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\BookStackAPI\ClassLibrary1\SharedModels.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Pages\LoginPage.xaml.cs">
+	    <DependentUpon>LoginPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\AdminMenu.xaml.cs">
+	    <DependentUpon>AdminMenu.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\AddProduct.xaml.cs">
+	    <DependentUpon>AddProduct.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\Products.xaml.cs">
+	    <DependentUpon>Products.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\UserMenu.xaml.cs">
+	    <DependentUpon>UserMenu.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Pages\AdminMenu.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\AddProduct.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\BookDetails.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\BookLoss.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\BookSold.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\ChangePassword.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\CreateUser.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\EditBook.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\HappeningDetails.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\Products.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\UserControl.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\UserMenu.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\ViewHappenings.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-ios'">
+	  <PackageReference Include="System.Text.Json">
+	    <Version>9.0.0</Version>
+	  </PackageReference>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-maccatalyst'">
+	  <PackageReference Include="System.Text.Json">
+	    <Version>9.0.0</Version>
+	  </PackageReference>
+	</ItemGroup>
+
+</Project>

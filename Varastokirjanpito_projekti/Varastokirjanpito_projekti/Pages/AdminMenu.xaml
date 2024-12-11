@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Varastokirjanpito_projekti.Pages.AdminMenu">
+    <VerticalStackLayout
+        Padding="30,0"
+        Spacing="25">
+        
+        <Button 
+            Text="Lisää tuote"
+            Clicked="AddProduct"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Button 
+            Text="Tuotteet"
+            Clicked="GetProducts"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Button 
+            Text="Hallitse käyttäjiä"
+            Clicked="ControlUsers"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        
+        <Button 
+            Text="Vaihda salasana"
+            Clicked="ChangePassword"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Button 
+            Text="Tarkastele tapahtumia"
+            Clicked="ViewHappenings"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+    </VerticalStackLayout>
+</ContentPage>

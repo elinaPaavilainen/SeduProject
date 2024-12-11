@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Varastokirjanpito_projekti.Pages.LoginPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+
+            <Label
+                Text="Kirjaudu sisään"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level4" />
+
+            <Label
+                Text="Käyttäjätunnus:"
+                Style="{StaticResource SubHeadline}"
+                SemanticProperties.HeadingLevel="Level5" />
+
+            <Entry
+                x:Name="Username"
+                Placeholder="Kirjoita käyttäjätunnus"
+                HorizontalOptions="Center" />
+
+            <Label
+                Text="Salasana:"
+                Style="{StaticResource SubHeadline}"
+                SemanticProperties.HeadingLevel="Level5" />
+
+            <Entry
+                x:Name="Password"
+                Placeholder="Kirjoita salasana"
+                IsPassword="True"
+                HorizontalOptions="Center" />
+
+            <Button
+                x:Name="LoginBtn"
+                Text="Kirjaudu" 
+                Clicked="LoginClicked"
+                HorizontalOptions="Center" />
+
+            <Label
+                x:Name="Tulos"
+                Text=""
+                Style="{StaticResource SubHeadline}"
+                SemanticProperties.HeadingLevel="Level5" />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

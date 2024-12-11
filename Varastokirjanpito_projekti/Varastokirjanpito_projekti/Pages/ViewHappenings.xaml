@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Varastokirjanpito_projekti.Pages.ViewHappenings">
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+
+            <Label 
+                Text="Kirjoita hakusana. Jos haluat nähdä koko lokin, paina 'Hae' ilman hakusanaa."
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
+            <Entry
+                x:Name="SearchHappenings"
+                Placeholder="Kirjoita hakusana"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
+            <Button
+                x:Name="SearchButton"
+                Text="Hae"
+                Clicked="SearchButtonClicked"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
+            <Label 
+                x:Name="FoundHappenings"
+                Text=""
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
+            <ListView x:Name="Deleted_booksListView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical" Padding="10" BackgroundColor="LightGray" HorizontalOptions="Center" VerticalOptions="Center">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnHappeningTapped" CommandParameter="{Binding .}" />
+                                </StackLayout.GestureRecognizers>
+
+                                <Label LineBreakMode="TailTruncation">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+
+                                            <Span Text="{Binding AuthorAndTitle}" FontAttributes="Bold"/>
+                                            <Span Text=" / "/>
+                                            <Span Text="{Binding User}"/>
+                                            <Span Text=" / " />
+                                            <Span Text="{Binding LossOrSold}" />
+                                            <Span Text="kpl" />
+                                            <Span Text=" / " />
+                                            <Span Text="{Binding Notes}" />
+                                            <Span Text="€/kpl" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

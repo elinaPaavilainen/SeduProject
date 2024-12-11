@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="Varastokirjanpito_projekti.Pages.HappeningDetails">
+
+    <ScrollView>
+        <StackLayout 
+            Padding="30,0"
+            Spacing="25">
+
+            <Label
+                Text="Kirjailija ja kirjan nimi:" />
+            <Label
+                Text="{Binding AuthorAndTitle}" />
+            <Label/>
+
+            <Label
+                Text="Muutoksen tehnyt käyttäjä:" />
+            <Label
+                Text="{Binding User}" />
+            <Label/>
+            
+            <Label
+                Text="Tehty muutos:" />
+            <Label
+                Text="{Binding LossOrSold}" />
+            <Label/>
+            
+            <Label
+                Text="Lisätietoja:" />
+            <Label
+                Text="{Binding Notes}" />
+            
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

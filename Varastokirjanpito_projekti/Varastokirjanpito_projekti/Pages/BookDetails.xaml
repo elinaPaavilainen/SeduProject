@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="Varastokirjanpito_projekti.Pages.BookDetails">
+
+    <ScrollView>
+        <StackLayout Padding="10">
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Kirjailija: " />
+                        <Span Text="{Binding Author}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Kirjan nimi: " />
+                        <Span Text="{Binding Title}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Määrä: " />
+                        <Span Text="{Binding Count}" />
+                        <Span Text="kpl" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Hinta: " />
+                        <Span Text="{Binding Price}" />
+                        <Span Text="€/kpl" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <VerticalStackLayout
+                Padding="30"
+                Spacing="20">
+                <Button Text="Muokkaa" Clicked="Modify" />
+                <Button Text="Hävikkiin" Clicked="Loss" />
+                <Button Text="Myy" Clicked="Sold" />
+            </VerticalStackLayout>
+            <Label
+                x:Name="Clicked"
+                Text=""/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
+
