@@ -82,18 +82,24 @@ namespace BookStackAPI.Controllers
         {
             return _context.Users.Any(e => e.Id == id);
         }
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUser(int id)
+        [HttpDelete("{username}")]
+        public async Task<IActionResult> DeleteUser(string username)
         {
-            var user = await _context.Users.FindAsync(id);
-            if (user == null)
+            try 
             {
-                return NotFound();
+                var user = await _context.Users.SingleOrDefaultAsync(u => u.Username == username);
+                if (user == null) 
+                {
+                    return NotFound();
+                }
+                _context.Users.Remove(user);
+                await _context.SaveChangesAsync();
+                return NoContent(); 
             }
-            _context.Users.Remove(user);
-            await _context.SaveChangesAsync();
-            return NoContent();
-        }
+            catch (Exception ex)
+            { 
+                return StatusCode(500, "Internal server error"); }
+            }
     }
 }
 

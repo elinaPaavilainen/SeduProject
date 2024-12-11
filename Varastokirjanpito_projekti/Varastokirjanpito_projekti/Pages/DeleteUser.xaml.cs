@@ -34,7 +34,7 @@ public partial class DeleteUser : ContentPage
             {
                 UsersList.Add(user);
             }
-            InfoLabel.Text = "Klikkaa valitsemaasi käyttäjää nähdäksesi kaikki tiedot.";
+            InfoLabel.Text = "Klikkaa valitsemaasi käyttäjää poistaaksesi.";
         }
         catch
         (Exception ex)
@@ -42,27 +42,28 @@ public partial class DeleteUser : ContentPage
             InfoLabel.Text = $"Error: {ex.Message}";
         }
     }
-    private async void OnUserTapped(object sender, EventArgs e)
-    { 
+    private async void OnUserTapped(object sender, EventArgs e) 
+    {
         var user = (Users)((TappedEventArgs)e).Parameter;
-        bool answer = await DisplayAlert("Poista käyttäjä", $"Haluatko poistaa käyttäjän {user.Username}?", "Kyllä", "Peruuta"); 
+        bool answer = await DisplayAlert("Poista käyttäjä", $"Haluatko poistaa käyttäjän {user.Username}?", "Kyllä", "Peruuta");
         if (answer) 
         {
             try 
             {
-                var deletedUser = await _apiService.DeleteGetUsersControllerDataByUsernameAsync(user.Username);
-                if (deletedUser != null) 
+                bool isDeleted = await _apiService.DeleteUsersControllerDataAsync(user.Username);
+                if (isDeleted) 
                 {
-                    UsersList.Remove(user);
+                    UsersList.Remove(user); 
                     InfoLabel.Text = $"Käyttäjä {user.Username} poistettu."; 
                 }
-                else { InfoLabel.Text = "Käyttäjää ei löytynyt tai poistaminen epäonnistui."; 
+                else 
+                {
+                    InfoLabel.Text = "Käyttäjää ei löytynyt tai poistaminen epäonnistui.";
                 }
-            }
+            } 
             catch (Exception ex) 
             {
-                InfoLabel.Text = $"Error: {ex.Message}"; 
-            }
+                InfoLabel.Text = $"Error: {ex.Message}"; } 
         }
     }
 }

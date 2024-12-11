@@ -7,7 +7,7 @@
                 Padding="30,0"
                 Spacing="25">
            <Label
-                Text="Hae käyttäjää. Jos haluat nähdä kaikki käyttäjät, jätä hakukenttä tyhjäksi."
+                Text="Hae käyttäjiä. Jos haluat nähdä kaikki, jätä hakukenttä tyhjäksi."
                 VerticalOptions="Center"    
                 HorizontalOptions="Center" />
 
@@ -32,7 +32,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Vertical" Padding="10" BackgroundColor="LightGray" HorizontalOptions="Start" VerticalOptions="Center">
+                            <StackLayout Orientation="Vertical" Padding="10" HorizontalOptions="Center" VerticalOptions="Center">
                                 <StackLayout.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="OnUserTapped" CommandParameter="{Binding .}" />
                                 </StackLayout.GestureRecognizers>

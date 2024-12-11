@@ -106,7 +106,7 @@ public class ApiService
     }
 
     // GET list by username
-    public async Task<Users> DeleteGetUsersControllerDataByUsernameAsync(string username) 
+    public async Task<Users> GetUsersControllerDataByUsernameAsync(string username) 
     {
         var response = await _httpClient.GetAsync($"api/Users/{username}");
         response.EnsureSuccessStatusCode();
@@ -142,11 +142,12 @@ public class ApiService
     }
 
     // DELETE request
-    public async Task<string> DeleteUsersControllerDataAsync(int id)
+
+    public async Task<bool> DeleteUsersControllerDataAsync(string username) 
     {
-        var response = await _httpClient.DeleteAsync($"api/Users/{id}");
-        response.EnsureSuccessStatusCode();
-        return await response.Content.ReadAsStringAsync();
+        var response = await _httpClient.DeleteAsync($"api/Users/{username}");
+        response.EnsureSuccessStatusCode(); 
+        return response.IsSuccessStatusCode; 
     }
 
     //API REQUEST FOR DeletedInformation
