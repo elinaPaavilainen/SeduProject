@@ -35,6 +35,12 @@ namespace Varastokirjanpito_projekti.Pages
                             await Navigation.PushAsync(new UserMenu(user));
                             Username.Text = "";
                             Password.Text = "";
+                            var navigationStack = Navigation.NavigationStack;
+                            var loginPage = navigationStack.FirstOrDefault(page => page is LoginPage); 
+                            if (loginPage != null) 
+                            {
+                                Navigation.RemovePage(loginPage); 
+                            }
                         }
                     }
                     else
