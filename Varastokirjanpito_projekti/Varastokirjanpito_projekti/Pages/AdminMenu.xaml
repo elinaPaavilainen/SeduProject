@@ -2,29 +2,31 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Varastokirjanpito_projekti.Pages.AdminMenu">
-    <VerticalStackLayout
-        Padding="30,0"
-        Spacing="25">
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
         
-        <Button 
-            Text="Lisää tuote"
-            Clicked="AddProduct"/>
+            <Button 
+                Text="Lisää tuote"
+                Clicked="AddProduct"/>
 
-        <Button 
-            Text="Tuotteet"
-            Clicked="GetProducts" />
+            <Button 
+                Text="Tuotteet"
+                Clicked="GetProducts" />
 
-        <Button 
-            Text="Hallitse käyttäjiä"
-            Clicked="ControlUsers" />
+            <Button 
+                Text="Hallitse käyttäjiä"
+                Clicked="ControlUsers" />
         
-        <Button 
-            Text="Vaihda salasana"
-            Clicked="ChangePassword"/>
+            <Button 
+                Text="Vaihda salasana"
+                Clicked="ChangePassword"/>
 
-        <Button 
-            Text="Tarkastele tapahtumia"
-            Clicked="ViewHappenings" />
+            <Button 
+                Text="Tarkastele tapahtumia"
+                Clicked="ViewHappenings" />
 
-    </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
