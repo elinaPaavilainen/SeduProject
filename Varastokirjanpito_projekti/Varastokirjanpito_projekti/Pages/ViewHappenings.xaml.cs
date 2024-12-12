@@ -33,7 +33,7 @@ public partial class ViewHappenings : ContentPage
                 result = await _apiService.SearchDeletedBooksAsync(query);
             }
             Deleted_booksList.Clear();
-            foreach (var deleted_book in result)
+            foreach (var deleted_book in result.Reverse())
             {
                 Deleted_booksList.Add(deleted_book);
             }
