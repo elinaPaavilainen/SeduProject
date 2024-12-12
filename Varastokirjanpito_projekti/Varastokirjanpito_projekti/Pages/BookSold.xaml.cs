@@ -21,24 +21,29 @@ namespace Varastokirjanpito_projekti.Pages
         {
             try
             {
-                
-                if (_book.Count > 1) 
+                int SellCount = int.Parse(SoldCount.Text);
+
+
+                if (_book.Count > SellCount) 
                 {
-                    _book.Count -= 1; 
+                    _book.Count -= SellCount; 
                     await _apiService.PutBooksControllerDataAsync(_book.Id, _book);
-                    await _apiService.LogDeletionAsync(_user.Username, $"{_book.Author}: {_book.Title}", "Myyty", $"{Notes.Text}");
-                    await DisplayAlert("", "Kirja myyty.", "OK");
+                    await _apiService.LogDeletionAsync(_user.Username, $"{_book.Author}: {_book.Title}", $"Myyty {SellCount} kpl", $"{Notes.Text}");
+                    await DisplayAlert("", "Myyty.", "OK");
                     await Navigation.PushAsync(new Products(_user));
                 }
-
+                else if (_book.Count < SellCount)
+                {
+                    await DisplayAlert("", "Kirjoja ei ole varastossa tarpeeksi.", "OK");
+                }
                 else
                 {
                     var response = await _apiService.DeleteBooksControllerDataAsync(_book.Id);
                     if (response != null)
                     {
                         //LogDeletionAsync(int id, string deletedBy, string authorAndTitle, string lossOrSold, string notes)
-                        await _apiService.LogDeletionAsync(_user.Username, $"{_book.Author}: {_book.Title}", "Sold", $"{Notes.Text}");
-                        await DisplayAlert("", "Kirja myyty.", "OK");
+                        await _apiService.LogDeletionAsync(_user.Username, $"{_book.Author}: {_book.Title}", $"Myyty {SellCount} kpl", $"{Notes.Text}");
+                        await DisplayAlert("", "Myyty.", "OK");
                         await Navigation.PushAsync(new Products(_user));
                     }
                     else
@@ -49,7 +54,7 @@ namespace Varastokirjanpito_projekti.Pages
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Error", $"Odottamaton tapahtuma: {ex.Message}", "OK");
+                await DisplayAlert("Error", "Varmista että annoit määräksi kokonaisluvun.", "OK");
             }
         }
     }

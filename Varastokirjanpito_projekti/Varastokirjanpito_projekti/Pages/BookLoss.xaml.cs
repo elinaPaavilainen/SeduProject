@@ -23,15 +23,21 @@ namespace Varastokirjanpito_projekti.Pages
             {
                 try
                 {
+                    int LoosedCount = int.Parse(LossCount.Text);
 
-                    if (_book.Count > 1)
+                    if (_book.Count > LoosedCount)
                     {
-                        _book.Count -= 1;
+                        _book.Count -= LoosedCount;
                         await _apiService.PutBooksControllerDataAsync(_book.Id, _book);
-                        await _apiService.LogDeletionAsync(_user.Username, $"{_book.Author}: {_book.Title}", "Hävikki", $"{Notes.Text}");
-                        await DisplayAlert("", "Kirja poistettu.", "OK");
+                        await _apiService.LogDeletionAsync(_user.Username, $"{_book.Author}: {_book.Title}", $"Hävikkiin {LoosedCount} kpl", $"{Notes.Text}");
+                        await DisplayAlert("", "Poistettu.", "OK");
                         Notes.Text = "";
                         await Navigation.PushAsync(new Products(_user));
+                    }
+
+                    else if (_book.Count < LoosedCount)
+                    {
+                        await DisplayAlert("", "Kirjoja ei ole varastossa tarpeeksi.", "OK");
                     }
 
                     else
@@ -40,7 +46,7 @@ namespace Varastokirjanpito_projekti.Pages
                         if (response != null)
                         {
                             //LogDeletionAsync(int id, string deletedBy, string authorAndTitle, string lossOrSold, string notes)
-                            await _apiService.LogDeletionAsync(_user.Username, $"{_book.Author}: {_book.Title}", "Loss", $"{Notes.Text}");
+                            await _apiService.LogDeletionAsync(_user.Username, $"{_book.Author}: {_book.Title}", $"Hävikkiin {LoosedCount} kpl", $"{Notes.Text}");
                             await DisplayAlert("", "Kirja poistettu.", "OK");
                             Notes.Text = "";
                             await Navigation.PushAsync(new Products(_user));

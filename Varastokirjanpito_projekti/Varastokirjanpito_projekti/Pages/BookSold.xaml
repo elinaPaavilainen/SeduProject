@@ -6,7 +6,18 @@
     <VerticalStackLayout
         Padding="30,0"
         Spacing="25">
-        
+
+        <Label 
+            Text="Myyty määrä:"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Entry 
+            x:Name="SoldCount"
+            Text="1"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
         <Label 
             Text="Myynnin lisätiedot (ei pakollinen)"
             VerticalOptions="Center" 

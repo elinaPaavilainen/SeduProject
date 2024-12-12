@@ -6,6 +6,18 @@
     <VerticalStackLayout
         Padding="30,0"
         Spacing="25">
+
+        <Label
+            Text="Poistettu määrä:"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Entry 
+            x:Name="LossCount"
+            Text="1"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
         <Label 
             Text="Poiston lisätiedot *"
             VerticalOptions="Center" 
