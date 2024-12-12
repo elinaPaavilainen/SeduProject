@@ -34,7 +34,10 @@ public partial class DeleteUser : ContentPage
             UsersList.Clear();
             foreach (var user in result)
             {
-                UsersList.Add(user);
+                if (user.Admin == false)
+                { 
+                    UsersList.Add(user);
+                }
             }
             InfoLabel.Text = "Klikkaa valitsemaasi k‰ytt‰j‰‰ poistaaksesi.";
         }
