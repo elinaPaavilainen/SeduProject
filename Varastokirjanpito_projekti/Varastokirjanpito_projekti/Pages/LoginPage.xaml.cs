@@ -27,10 +27,14 @@ namespace Varastokirjanpito_projekti.Pages
                         if (user.Admin == true)
                         {
                             await Navigation.PushAsync(new AdminMenu(user));
+                            Username.Text = "";
+                            Password.Text = "";
                         }
                         else
                         {
                             await Navigation.PushAsync(new UserMenu(user));
+                            Username.Text = "";
+                            Password.Text = "";
                         }
                     }
                     else
