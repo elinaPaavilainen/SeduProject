@@ -57,7 +57,7 @@ namespace Varastokirjanpito_projekti.Pages
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Error", "Varmista ett‰ annoit m‰‰r‰ksi kokonaisluvun.", "OK");
+                await DisplayAlert("Error", "Varmista ett‰ m‰‰r‰ on kokonaisluku.", "OK");
             }
         }
     }
