@@ -27,6 +27,10 @@
                 Text="Tarkastele tapahtumia"
                 Clicked="ViewHappenings" />
 
+            <Button 
+                Text="Sulje"
+                Clicked="ExitButtonClicked" />
+
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

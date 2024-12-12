@@ -36,4 +36,8 @@ public partial class AdminMenu : ContentPage
     {
         await Navigation.PushAsync(new ViewHappenings(_user));
     }
+    private async void ExitButtonClicked(object sender, EventArgs e) 
+    {
+        Application.Current.Quit(); 
+    }
 }

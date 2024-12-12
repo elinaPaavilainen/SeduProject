@@ -26,4 +26,8 @@ public partial class UserMenu : ContentPage
     {
         await Navigation.PushAsync(new ChangePassword(_user));
     }
+    private async void ExitButtonClicked(object sender, EventArgs e)
+    {
+        Application.Current.Quit();
+    }
 }

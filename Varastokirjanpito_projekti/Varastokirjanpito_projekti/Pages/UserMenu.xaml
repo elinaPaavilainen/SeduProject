@@ -18,5 +18,9 @@
             Text="Vaihda salasana"
             Clicked="ChangePassword" />
 
+        <Button 
+            Text="Sulje"
+            Clicked="ExitButtonClicked" />
+
     </VerticalStackLayout>
 </ContentPage>
