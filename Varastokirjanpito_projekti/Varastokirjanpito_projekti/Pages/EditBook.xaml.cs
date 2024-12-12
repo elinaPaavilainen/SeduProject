@@ -30,12 +30,12 @@ namespace Varastokirjanpito_projekti.Pages
                 }
                 else
                 {
-                    await DisplayAlert("Error", "Failed to update book details", "OK");
+                    await DisplayAlert("Error", "Tietojen päivitys epäonnistui", "OK");
                 }
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Error", $"An error occurred: {ex.Message}", "OK");
+                await DisplayAlert("Error", $"Odottamaton tapahtuma: {ex.Message}", "OK");
             }
         }
     }

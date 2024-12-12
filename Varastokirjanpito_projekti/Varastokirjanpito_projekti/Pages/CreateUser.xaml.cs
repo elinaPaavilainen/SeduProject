@@ -35,7 +35,7 @@ public partial class CreateUser : ContentPage
 
             catch (Exception ex) 
             {
-                await DisplayAlert("Error", $"Failed to save data: {ex.Message}", "OK"); 
+                await DisplayAlert("Error", $"K‰ytt‰j‰n lis‰‰minen ep‰onnistui: {ex.Message}", "OK"); 
             }
         }
         else

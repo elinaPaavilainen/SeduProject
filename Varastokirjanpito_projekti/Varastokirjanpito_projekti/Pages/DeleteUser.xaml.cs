@@ -68,7 +68,7 @@ public partial class DeleteUser : ContentPage
             } 
             catch (Exception ex) 
             {
-                InfoLabel.Text = $"Error: {ex.Message}"; } 
+                InfoLabel.Text = $"Odottamaton tapahtuma: {ex.Message}"; } 
         }
     }
     private async void BackToMenu(object sender, EventArgs e)

@@ -43,13 +43,13 @@ namespace Varastokirjanpito_projekti.Pages
                     }
                     else
                     {
-                        await DisplayAlert("Error", "Failed to delete book", "OK");
+                        await DisplayAlert("Error", "Kirjan poisto epäonnistui.", "OK");
                     }
                 }
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Error", $"An error occurred: {ex.Message}", "OK");
+                await DisplayAlert("Error", $"Odottamaton tapahtuma: {ex.Message}", "OK");
             }
         }
        

@@ -40,10 +40,16 @@ namespace Varastokirjanpito_projekti.Pages
                             if (_user.Admin == true)
                             {
                                 await Navigation.PushAsync(new AdminMenu(_user));
+                                OldPassword.Text = "";
+                                NewPassword.Text = "";
+                                NewPasswordAgain.Text = "";
                             }
                             else
                             {
                                 await Navigation.PushAsync(new UserMenu(_user));
+                                OldPassword.Text = "";
+                                NewPassword.Text = "";
+                                NewPasswordAgain.Text = "";
                             }
 
                         }
@@ -60,7 +66,7 @@ namespace Varastokirjanpito_projekti.Pages
             } 
             catch (Exception ex) 
             {
-                await DisplayAlert("Error", $"Virhe: {ex.Message}", "OK"); 
+                await DisplayAlert("Error", "Täytä kaikki kentät", "OK"); 
             }
         }
         private async void BackToMenu(object sender, EventArgs e)
