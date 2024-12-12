@@ -15,24 +15,32 @@ public partial class CreateUser : ContentPage
     }
     private async void CreateNewUser(object sender, EventArgs e)
     {
-        var UserInfo = new Users
-        {
-            Username = NewUsername.Text,
-            Password = NewUserPassword.Text,
-            Admin = false
-        };
+        if (NewUserPassword.Text == NewUserPasswordAgain.Text)
+        { 
+            var UserInfo = new Users
+            {
+                Username = NewUsername.Text,
+                Password = NewUserPassword.Text,
+                Admin = false
+            };
 
-        try
-        {
-            var result = _apiService.PostUsersControllerDataAsync(UserInfo);
-            await DisplayAlert("", "Uusi k‰ytt‰j‰ lis‰tty!", "OK");
-            NewUsername.Text = "";
-            NewUserPassword.Text = "";
+            try
+            {
+                var result = _apiService.PostUsersControllerDataAsync(UserInfo);
+                await DisplayAlert("", "Uusi k‰ytt‰j‰ lis‰tty!", "OK");
+                NewUsername.Text = "";
+                NewUserPassword.Text = "";
+                NewUserPasswordAgain.Text = "";
+            }
+
+            catch (Exception ex) 
+            {
+                await DisplayAlert("Error", $"Failed to save data: {ex.Message}", "OK"); 
+            }
         }
-
-        catch (Exception ex) 
+        else
         {
-            await DisplayAlert("Error", $"Failed to save data: {ex.Message}", "OK"); 
+            await DisplayAlert("Tarkista salasana", "Salasanat eiv‰t t‰sm‰‰.", "OK");
         }
     }
     private async void BackToMenu(object sender, EventArgs e)

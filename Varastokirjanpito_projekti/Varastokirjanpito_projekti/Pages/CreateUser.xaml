@@ -28,7 +28,19 @@
                 Placeholder="Kirjoita salasana"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
-        
+            
+            <Label 
+                Text="Uuden käyttäjän aloitussalasana uudelleen:"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
+            <Entry 
+                x:Name="NewUserPasswordAgain"
+                IsPassword="True"
+                Placeholder="Kirjoita salasana"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
             <Button
                 Text="Tallenna"
                 Clicked="CreateNewUser"
