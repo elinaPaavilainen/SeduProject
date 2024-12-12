@@ -16,6 +16,8 @@ public partial class AddProduct : ContentPage
     private async void ProductAdded(object sender, EventArgs e)
     {
 
+        try 
+        {     
         var data = new Books
         {
             Author = Author.Text,
@@ -23,22 +25,26 @@ public partial class AddProduct : ContentPage
             Count = int.Parse(ProductCount.Text),
             Price = float.Parse(ProductPrice.Text.Replace(',', '.'), CultureInfo.InvariantCulture)
         };
+            try
+            {
+                var result = _apiService.PostBooksControllerDataAsync(data);
+                await _apiService.LogDeletionAsync(_user.Username, $"{Author.Text}: {Title.Text}", "Lis‰tty", AdditionalInfo.Text);
+                await DisplayAlert("", "Kirja lis‰tty.", "OK");
 
-        try
-        {
-            var result = _apiService.PostBooksControllerDataAsync(data);
-            await _apiService.LogDeletionAsync(_user.Username, $"{Author.Text}: {Title.Text}", "Lis‰tty", AdditionalInfo.Text);
-            await DisplayAlert("", "Kirja lis‰tty.", "OK");
-
-            Author.Text = "";
-            Title.Text = "";
-            ProductCount.Text = "";
-            ProductPrice.Text = "";
-            AdditionalInfo.Text = "";
+                Author.Text = "";
+                Title.Text = "";
+                ProductCount.Text = "";
+                ProductPrice.Text = "";
+                AdditionalInfo.Text = "";
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", $"Failed to save data: {ex.Message}", "OK");
+            }
         }
-        catch (Exception ex) 
+        catch
         {
-            await DisplayAlert("Error", $"Failed to save data: {ex.Message}", "OK"); 
-        }
+            await DisplayAlert("T‰yt‰ pakolliset kent‰t", "Huomioi ett‰ m‰‰r‰n t‰ytyy olla kokonaisluku ja hinnan kokonais- tai desimaaliluku.", "OK");
+        }   
     }
 }

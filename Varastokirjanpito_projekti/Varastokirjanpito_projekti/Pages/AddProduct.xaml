@@ -8,7 +8,7 @@
             Spacing="25">
         
             <Label 
-                Text="Kirjailija"
+                Text="Kirjailija *"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
 
@@ -18,7 +18,7 @@
                  HorizontalOptions="Center" />
 
             <Label 
-                Text="Kirjan nimi"
+                Text="Kirjan nimi *"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
 
@@ -28,7 +28,7 @@
                  HorizontalOptions="Center" />
 
             <Label 
-                Text="Tuotteiden määrä"
+                Text="Tuotteiden määrä *"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
 
@@ -38,7 +38,7 @@
                  HorizontalOptions="Center" />
 
             <Label 
-                Text="Tuotteen hinta/kpl"
+                Text="Tuotteen hinta/kpl *"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
 
