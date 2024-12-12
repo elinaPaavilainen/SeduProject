@@ -22,6 +22,7 @@
                 <Setter Property="FontSize" Value="26" />
             </Style>
             <Style TargetType="Entry">
+                <Setter Property="BackgroundColor" Value="AntiqueWhite" />
                 <Setter Property="FontFamily" Value="Arial" />
                 <Setter Property="FontSize" Value="26" />
             </Style>
