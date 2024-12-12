@@ -47,4 +47,15 @@ public partial class AddProduct : ContentPage
             await DisplayAlert("T‰yt‰ pakolliset kent‰t", "Huomioi ett‰ m‰‰r‰n t‰ytyy olla kokonaisluku ja hinnan kokonais- tai desimaaliluku.", "OK");
         }   
     }
+    private async void BackToMenu(object sender, EventArgs e)
+    {
+        if (_user.Admin == true)
+        {
+            await Navigation.PushAsync(new AdminMenu(_user));
+        }
+        else
+        {
+            await Navigation.PushAsync(new UserMenu(_user));
+        }
+    }
 }

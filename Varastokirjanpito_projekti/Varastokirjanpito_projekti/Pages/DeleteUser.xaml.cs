@@ -6,11 +6,13 @@ namespace Varastokirjanpito_projekti.Pages;
 public partial class DeleteUser : ContentPage
 {
     private readonly ApiService _apiService;
+    private readonly Users _user;
     public ObservableCollection<Users> UsersList { get; set; }
-    public DeleteUser()
+    public DeleteUser(Users user)
 	{
 		InitializeComponent();
         _apiService = new ApiService();
+        _user = user;
         UsersList = new ObservableCollection<Users>();
         UsersListView.ItemsSource = UsersList;
     }
@@ -65,5 +67,9 @@ public partial class DeleteUser : ContentPage
             {
                 InfoLabel.Text = $"Error: {ex.Message}"; } 
         }
+    }
+    private async void BackToMenu(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new AdminMenu(_user));
     }
 }

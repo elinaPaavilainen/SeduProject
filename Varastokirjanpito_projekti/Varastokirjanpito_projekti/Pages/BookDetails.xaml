@@ -57,6 +57,12 @@
             <Label
                 x:Name="Clicked"
                 Text=""/>
+
+            <Button
+                Text="Päävalikkoon"
+                Clicked="BackToMenu"
+                HorizontalOptions="Center" />
+            
         </StackLayout>
     </ScrollView>
 </ContentPage>

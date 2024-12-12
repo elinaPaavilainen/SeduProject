@@ -31,7 +31,12 @@
                 Text="Lisätietoja:" />
             <Label
                 Text="{Binding Notes}" />
-            
+
+            <Button
+                Text="Päävalikkoon"
+                Clicked="BackToMenu"
+                HorizontalOptions="Center" />
+
         </StackLayout>
     </ScrollView>
 </ContentPage>

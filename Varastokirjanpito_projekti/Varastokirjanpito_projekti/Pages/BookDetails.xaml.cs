@@ -24,5 +24,16 @@ public partial class BookDetails : ContentPage
     private async void Sold(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new BookSold((Books)BindingContext, _user));
-    } 
+    }
+    private async void BackToMenu(object sender, EventArgs e)
+    {
+        if (_user.Admin == true)
+        {
+            await Navigation.PushAsync(new AdminMenu(_user));
+        }
+        else
+        {
+            await Navigation.PushAsync(new UserMenu(_user));
+        }
+    }
 }

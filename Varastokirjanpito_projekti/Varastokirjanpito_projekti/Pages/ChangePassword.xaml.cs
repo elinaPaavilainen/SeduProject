@@ -63,5 +63,16 @@ namespace Varastokirjanpito_projekti.Pages
                 await DisplayAlert("Error", $"Virhe: {ex.Message}", "OK"); 
             }
         }
+        private async void BackToMenu(object sender, EventArgs e)
+        {
+            if (_user.Admin == true)
+            {
+                await Navigation.PushAsync(new AdminMenu(_user));
+            }
+            else
+            {
+                await Navigation.PushAsync(new UserMenu(_user));
+            }
+        }
     }
 }

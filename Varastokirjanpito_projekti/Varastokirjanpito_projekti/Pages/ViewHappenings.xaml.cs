@@ -6,13 +6,15 @@ namespace Varastokirjanpito_projekti.Pages;
 public partial class ViewHappenings : ContentPage
 {
     private readonly ApiService _apiService;
+    private readonly Users _user;
     public ObservableCollection<Deleted_books> Deleted_booksList { get; set; }
-    public ViewHappenings()
+    public ViewHappenings(Users user)
     {
         InitializeComponent();
         _apiService = new ApiService();
         Deleted_booksList = new ObservableCollection<Deleted_books>();
         Deleted_booksListView.ItemsSource = Deleted_booksList;
+        _user = user;   
     }
     private async void SearchButtonClicked(object sender, EventArgs e)
     {
@@ -49,7 +51,18 @@ public partial class ViewHappenings : ContentPage
         var happening = stackLayout.BindingContext as Deleted_books;
         if (happening != null)
         {
-            await Navigation.PushAsync(new HappeningDetails(happening));
+            await Navigation.PushAsync(new HappeningDetails(happening, _user));
+        }
+    }
+    private async void BackToMenu(object sender, EventArgs e)
+    {
+        if (_user.Admin == true)
+        {
+            await Navigation.PushAsync(new AdminMenu(_user));
+        }
+        else
+        {
+            await Navigation.PushAsync(new UserMenu(_user));
         }
     }
 }

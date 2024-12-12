@@ -45,6 +45,12 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+
+            <Button
+            Text="Päävalikkoon"
+            Clicked="BackToMenu"
+            HorizontalOptions="Center" />
+            
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

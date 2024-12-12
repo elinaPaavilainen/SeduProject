@@ -6,11 +6,12 @@ namespace Varastokirjanpito_projekti.Pages;
 public partial class CreateUser : ContentPage
 {
     private readonly ApiService _apiService;
-    public CreateUser()
+    private readonly Users _user;
+    public CreateUser(Users user)
     {
         InitializeComponent();
         _apiService = new ApiService();
-
+        _user = user;
     }
     private async void CreateNewUser(object sender, EventArgs e)
     {
@@ -33,5 +34,10 @@ public partial class CreateUser : ContentPage
         {
             await DisplayAlert("Error", $"Failed to save data: {ex.Message}", "OK"); 
         }
+    }
+    private async void BackToMenu(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new AdminMenu(_user));
+       
     }
 }

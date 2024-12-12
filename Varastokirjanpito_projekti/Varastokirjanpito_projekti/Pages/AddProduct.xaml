@@ -6,7 +6,7 @@
         <VerticalStackLayout
             Padding="30,0"
             Spacing="25">
-        
+
             <Label 
                 Text="Kirjailija *"
                 VerticalOptions="Center" 
@@ -60,10 +60,14 @@
                 HorizontalOptions="Center" />
 
             <Button
-                  x:Name="Save"
                   Text="Tallenna"
                   Clicked="ProductAdded"
                   HorizontalOptions="Center" />
+
+            <Button
+                 Text="Päävalikkoon"
+                 Clicked="BackToMenu"
+                 HorizontalOptions="Center" />
 
         </VerticalStackLayout>
     </ScrollView>
