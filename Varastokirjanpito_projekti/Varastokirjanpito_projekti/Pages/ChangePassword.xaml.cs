@@ -26,7 +26,7 @@ namespace Varastokirjanpito_projekti.Pages
                 {
                     await DisplayAlert("", "Salasana t‰ytyy olla v‰hint‰‰n 8 merkki‰ pitk‰ ja sis‰lt‰‰ v‰hint‰‰n yhden ison kirjaimen, pienen kirjaimen, numeron ja erikoismerkin.", "OK");
                 }
-                if (OldPasswordInput == NewPasswordInput)
+                else if (OldPasswordInput == NewPasswordInput)
                 {
                     await DisplayAlert("", "Uusi salasana t‰ytyy olla eri kuin vanha.", "OK");
                 }
