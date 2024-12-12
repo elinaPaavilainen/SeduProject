@@ -22,7 +22,7 @@
             <Label/>
             
             <Label
-                Text="Tehty muutos:" />
+                Text="Toiminta:" />
             <Label
                 Text="{Binding LossOrSold}" />
             <Label/>
