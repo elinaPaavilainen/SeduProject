@@ -1,5 +1,4 @@
 using SharedModels;
-using System.Collections.ObjectModel;
 
 namespace Varastokirjanpito_projekti.Pages;
 

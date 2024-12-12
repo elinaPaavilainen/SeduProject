@@ -1,5 +1,4 @@
 using SharedModels;
-using System.ComponentModel.Design;
 
 namespace Varastokirjanpito_projekti.Pages
 {
