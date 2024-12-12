@@ -35,10 +35,5 @@
             x:Name="Info"
             Text="" />
 
-        <Button
-            Text="Päävalikkoon"
-            Clicked="BackToMenu"
-            HorizontalOptions="Center" />
-        
     </StackLayout>
 </ContentPage>

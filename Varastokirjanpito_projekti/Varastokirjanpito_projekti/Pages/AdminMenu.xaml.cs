@@ -34,6 +34,6 @@ public partial class AdminMenu : ContentPage
 
     private async void ViewHappenings(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new ViewHappenings());
+        await Navigation.PushAsync(new ViewHappenings(_user));
     }
 }

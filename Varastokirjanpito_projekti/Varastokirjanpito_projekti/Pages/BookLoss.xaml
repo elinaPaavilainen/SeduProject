@@ -23,10 +23,7 @@
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
 
-        <Button
-            Text="Päävalikkoon"
-            Clicked="BackToMenu"
-            HorizontalOptions="Center" />
+
 
     </VerticalStackLayout>
 </ContentPage>
