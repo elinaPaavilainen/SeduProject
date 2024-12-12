@@ -13,6 +13,7 @@
 
         <Entry 
             x:Name="Notes"
+            Text=""
             Placeholder="Esim. myyntikelvoton, sivuja revennyt..."
             VerticalOptions="Center" 
             HorizontalOptions="Center" />

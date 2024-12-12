@@ -20,7 +20,7 @@ namespace Varastokirjanpito_projekti.Pages
 
         private async void DeleteBook(object sender, EventArgs e)
         {
-            if (Notes.Text != null)
+            if (Notes.Text != "")
             {
                 try
                 {
@@ -31,6 +31,7 @@ namespace Varastokirjanpito_projekti.Pages
                         await _apiService.PutBooksControllerDataAsync(_book.Id, _book);
                         await _apiService.LogDeletionAsync(_user.Username, $"{_book.Author}: {_book.Title}", "Hävikki", $"{Notes.Text}");
                         await DisplayAlert("", "Kirja poistettu.", "OK");
+                        Notes.Text = "";
                         await Navigation.PushAsync(new Products(_user));
                     }
 
@@ -42,6 +43,7 @@ namespace Varastokirjanpito_projekti.Pages
                             //LogDeletionAsync(int id, string deletedBy, string authorAndTitle, string lossOrSold, string notes)
                             await _apiService.LogDeletionAsync(_user.Username, $"{_book.Author}: {_book.Title}", "Loss", $"{Notes.Text}");
                             await DisplayAlert("", "Kirja poistettu.", "OK");
+                            Notes.Text = "";
                             await Navigation.PushAsync(new Products(_user));
                         }
                         else
