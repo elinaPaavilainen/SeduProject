@@ -24,8 +24,13 @@ namespace Varastokirjanpito_projekti.Pages
 
                 if (NewPasswordInput.Length < 8 || !Regex.IsMatch(NewPasswordInput, @"^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[\W_]).+$"))
                 {
-                    InfoLabel.Text = "Salasana täytyy olla vähintään 8 merkkiä pitkä ja sisältää vähintään yhden ison kirjaimen, pienen kirjaimen, numeron ja erikoismerkin.";
+                    await DisplayAlert("", "Salasana täytyy olla vähintään 8 merkkiä pitkä ja sisältää vähintään yhden ison kirjaimen, pienen kirjaimen, numeron ja erikoismerkin.", "OK");
                 }
+                if (OldPasswordInput == NewPasswordInput)
+                {
+                    await DisplayAlert("", "Uusi salasana täytyy olla eri kuin vanha.", "OK");
+                }
+
                 else
                 {
 
