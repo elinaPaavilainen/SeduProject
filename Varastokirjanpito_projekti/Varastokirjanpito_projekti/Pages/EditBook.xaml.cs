@@ -20,7 +20,7 @@ namespace Varastokirjanpito_projekti.Pages
         private async void SaveChanges(object sender, EventArgs e)
         {
             DateTime now = DateTime.Now;
-            string timestamp = now.ToString("yyyy-MM-dd HH:mm:ss");
+            string timestamp = now.ToString("dd.MM.yyyy HH:mm");
 
             try
             {

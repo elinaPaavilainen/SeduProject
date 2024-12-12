@@ -62,7 +62,7 @@ namespace Varastokirjanpito_projekti.Pages
                 }
                 catch (Exception ex)
                 {
-                    await DisplayAlert("Error", $"Odottamaton tapahtuma: {ex.Message}", "OK");
+                    await DisplayAlert("Error", "Varmista ett‰ m‰‰r‰ on kokonaisluku.", "OK");
                 }
             }
             else
