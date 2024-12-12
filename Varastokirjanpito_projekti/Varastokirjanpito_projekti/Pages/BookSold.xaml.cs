@@ -19,6 +19,9 @@ namespace Varastokirjanpito_projekti.Pages
 
         private async void SellBook(object sender, EventArgs e)
         {
+            DateTime now = DateTime.Now;
+            string timestamp = now.ToString("dd.MM.yyyy HH:mm");
+
             try
             {
                 int SellCount = int.Parse(SoldCount.Text);
@@ -28,7 +31,7 @@ namespace Varastokirjanpito_projekti.Pages
                 {
                     _book.Count -= SellCount; 
                     await _apiService.PutBooksControllerDataAsync(_book.Id, _book);
-                    await _apiService.LogDeletionAsync(_user.Username, $"{_book.Author}: {_book.Title}", $"Myyty {SellCount} kpl", $"{Notes.Text}");
+                    await _apiService.LogDeletionAsync(_user.Username, $"{_book.Author}: {_book.Title}", $"Myyty {SellCount} kpl, {timestamp}", $"{Notes.Text}");
                     await DisplayAlert("", "Myyty.", "OK");
                     await Navigation.PushAsync(new Products(_user));
                 }
@@ -42,7 +45,7 @@ namespace Varastokirjanpito_projekti.Pages
                     if (response != null)
                     {
                         //LogDeletionAsync(int id, string deletedBy, string authorAndTitle, string lossOrSold, string notes)
-                        await _apiService.LogDeletionAsync(_user.Username, $"{_book.Author}: {_book.Title}", $"Myyty {SellCount} kpl", $"{Notes.Text}");
+                        await _apiService.LogDeletionAsync(_user.Username, $"{_book.Author}: {_book.Title}", $"Myyty {SellCount} kpl, {timestamp}", $"{Notes.Text}");
                         await DisplayAlert("", "Myyty.", "OK");
                         await Navigation.PushAsync(new Products(_user));
                     }

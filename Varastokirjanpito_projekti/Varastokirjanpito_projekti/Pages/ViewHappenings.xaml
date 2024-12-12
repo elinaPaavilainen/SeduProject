@@ -43,13 +43,12 @@
                                 <Label LineBreakMode="TailTruncation">
                                     <Label.FormattedText>
                                         <FormattedString>
-
+                                            <Span Text="{Binding LossOrSold}" />
+                                            <Span Text="kpl" />
+                                            <Span Text=" / " />
                                             <Span Text="{Binding AuthorAndTitle}" FontAttributes="Bold"/>
                                             <Span Text=" / "/>
                                             <Span Text="{Binding User}"/>
-                                            <Span Text=" / " />
-                                            <Span Text="{Binding LossOrSold}" />
-                                            <Span Text="kpl" />
                                             <Span Text=" / " />
                                             <Span Text="{Binding Notes}" />
                                             <Span Text="€/kpl" />

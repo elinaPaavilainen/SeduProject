@@ -15,7 +15,8 @@ public partial class AddProduct : ContentPage
 	}
     private async void ProductAdded(object sender, EventArgs e)
     {
-
+        DateTime now = DateTime.Now;
+        string timestamp = now.ToString("dd.MM.yyyy HH:mm");
         try 
         {     
         var data = new Books
@@ -28,7 +29,7 @@ public partial class AddProduct : ContentPage
             try
             {
                 var result = _apiService.PostBooksControllerDataAsync(data);
-                await _apiService.LogDeletionAsync(_user.Username, $"{Author.Text}: {Title.Text}", "Lisätty", AdditionalInfo.Text);
+                await _apiService.LogDeletionAsync(_user.Username, $"{Author.Text}: {Title.Text}", $"Lisätty, {timestamp}", AdditionalInfo.Text);
                 await DisplayAlert("", "Kirja lisätty.", "OK");
 
                 Author.Text = "";

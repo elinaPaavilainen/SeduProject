@@ -19,13 +19,16 @@ namespace Varastokirjanpito_projekti.Pages
 
         private async void SaveChanges(object sender, EventArgs e)
         {
+            DateTime now = DateTime.Now;
+            string timestamp = now.ToString("yyyy-MM-dd HH:mm:ss");
+
             try
             {
                 var response = await _apiService.PutBooksControllerDataAsync(_book.Id, _book);
                 if (response != null)
                 {
                     await DisplayAlert("", "Kirjan tiedot päivitetty.", "OK");
-                    await _apiService.LogDeletionAsync(_user.Username, $"{ _book.Author}: {_book.Title}", "Muokattu", AdditionalInfo.Text);
+                    await _apiService.LogDeletionAsync(_user.Username, $"{ _book.Author}: {_book.Title}", $"Muokattu, {timestamp}", AdditionalInfo.Text);
                     await Navigation.PushAsync(new Products(_user));
                 }
                 else

@@ -19,6 +19,9 @@ namespace Varastokirjanpito_projekti.Pages
 
         private async void DeleteBook(object sender, EventArgs e)
         {
+            DateTime now = DateTime.Now;
+            string timestamp = now.ToString("dd.MM.yyyy HH:mm");
+
             if (Notes.Text != "")
             {
                 try
@@ -29,7 +32,7 @@ namespace Varastokirjanpito_projekti.Pages
                     {
                         _book.Count -= LoosedCount;
                         await _apiService.PutBooksControllerDataAsync(_book.Id, _book);
-                        await _apiService.LogDeletionAsync(_user.Username, $"{_book.Author}: {_book.Title}", $"Hävikkiin {LoosedCount} kpl", $"{Notes.Text}");
+                        await _apiService.LogDeletionAsync(_user.Username, $"{_book.Author}: {_book.Title}", $"Hävikkiin {LoosedCount} kpl, {timestamp}", $"{Notes.Text}");
                         await DisplayAlert("", "Poistettu.", "OK");
                         Notes.Text = "";
                         await Navigation.PushAsync(new Products(_user));
@@ -46,7 +49,7 @@ namespace Varastokirjanpito_projekti.Pages
                         if (response != null)
                         {
                             //LogDeletionAsync(int id, string deletedBy, string authorAndTitle, string lossOrSold, string notes)
-                            await _apiService.LogDeletionAsync(_user.Username, $"{_book.Author}: {_book.Title}", $"Hävikkiin {LoosedCount} kpl", $"{Notes.Text}");
+                            await _apiService.LogDeletionAsync(_user.Username, $"{_book.Author}: {_book.Title}", $"Hävikkiin {LoosedCount} kpl, {timestamp} ", $"{Notes.Text}");
                             await DisplayAlert("", "Kirja poistettu.", "OK");
                             Notes.Text = "";
                             await Navigation.PushAsync(new Products(_user));
