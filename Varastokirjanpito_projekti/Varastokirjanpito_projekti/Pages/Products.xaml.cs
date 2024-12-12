@@ -33,7 +33,7 @@ public partial class Products : ContentPage
 				result = await _apiService.SearchBooksAsync(query);
 			}
 			BooksList.Clear();
-			foreach (var book in result) 
+			foreach (var book in result.OrderBy(b => b.Author)) 
 			{
 				BooksList.Add(book);
 			}
