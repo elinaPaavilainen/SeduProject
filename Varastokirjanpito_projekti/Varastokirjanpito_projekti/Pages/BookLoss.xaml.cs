@@ -1,4 +1,5 @@
 using SharedModels;
+using System.ComponentModel.Design;
 
 namespace Varastokirjanpito_projekti.Pages
 {
@@ -19,37 +20,44 @@ namespace Varastokirjanpito_projekti.Pages
 
         private async void DeleteBook(object sender, EventArgs e)
         {
-            try
+            if (Notes.Text != null)
             {
-
-                if (_book.Count > 1)
+                try
                 {
-                    _book.Count -= 1;
-                    await _apiService.PutBooksControllerDataAsync(_book.Id, _book);
-                    await _apiService.LogDeletionAsync(_user.Username, $"{_book.Author}: {_book.Title}", "Hävikki", $"{Notes.Text}");
-                    await DisplayAlert("", "Kirja poistettu.", "OK");
-                    await Navigation.PushAsync(new Products(_user));
-                }
 
-                else
-                {
-                    var response = await _apiService.DeleteBooksControllerDataAsync(_book.Id);
-                    if (response != null)
+                    if (_book.Count > 1)
                     {
-                        //LogDeletionAsync(int id, string deletedBy, string authorAndTitle, string lossOrSold, string notes)
-                        await _apiService.LogDeletionAsync(_user.Username, $"{_book.Author}: {_book.Title}", "Loss", $"{Notes.Text}");
+                        _book.Count -= 1;
+                        await _apiService.PutBooksControllerDataAsync(_book.Id, _book);
+                        await _apiService.LogDeletionAsync(_user.Username, $"{_book.Author}: {_book.Title}", "Hävikki", $"{Notes.Text}");
                         await DisplayAlert("", "Kirja poistettu.", "OK");
                         await Navigation.PushAsync(new Products(_user));
                     }
+
                     else
                     {
-                        await DisplayAlert("Error", "Kirjan poisto epäonnistui.", "OK");
+                        var response = await _apiService.DeleteBooksControllerDataAsync(_book.Id);
+                        if (response != null)
+                        {
+                            //LogDeletionAsync(int id, string deletedBy, string authorAndTitle, string lossOrSold, string notes)
+                            await _apiService.LogDeletionAsync(_user.Username, $"{_book.Author}: {_book.Title}", "Loss", $"{Notes.Text}");
+                            await DisplayAlert("", "Kirja poistettu.", "OK");
+                            await Navigation.PushAsync(new Products(_user));
+                        }
+                        else
+                        {
+                            await DisplayAlert("Error", "Kirjan poisto epäonnistui.", "OK");
+                        }
                     }
                 }
+                catch (Exception ex)
+                {
+                    await DisplayAlert("Error", $"Odottamaton tapahtuma: {ex.Message}", "OK");
+                }
             }
-            catch (Exception ex)
+            else
             {
-                await DisplayAlert("Error", $"Odottamaton tapahtuma: {ex.Message}", "OK");
+                await DisplayAlert("", "Täytä poiston lisätiedot", "OK");
             }
         }
        
