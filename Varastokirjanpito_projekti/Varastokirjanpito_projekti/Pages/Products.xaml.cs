@@ -42,7 +42,7 @@ public partial class Products : ContentPage
 		catch
 		(Exception ex) 
 		{
-			Result.Text = $"Error: {ex.Message}"; 
+			Result.Text = $"Odottamaton virhe: {ex.Message}"; 
 		}
 	}
     private async void OnBookTapped(object sender, EventArgs e) 
