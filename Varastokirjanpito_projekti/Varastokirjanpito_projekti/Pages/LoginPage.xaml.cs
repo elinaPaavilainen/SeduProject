@@ -51,7 +51,7 @@ namespace Varastokirjanpito_projekti.Pages
             }
             catch (Exception ex) 
             {
-                Tulos.Text = "Kirjoita käyttäjätunnus ja salasana"; 
+                Tulos.Text = "Yhteysongelma"; 
             }       
         }
     }
