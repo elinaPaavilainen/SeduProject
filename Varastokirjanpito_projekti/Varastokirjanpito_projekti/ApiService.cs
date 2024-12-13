@@ -13,7 +13,7 @@ public class ApiService
             MaxConnectionsPerServer = 1, AllowAutoRedirect = true 
         });
 
-        _httpClient.BaseAddress = new Uri("http://10.6.128.116:5195/");
+        _httpClient.BaseAddress = new Uri("http://10.6.128.105:5195/");
         //_httpClient.BaseAddress = new Uri("://localhost:5195/)";
         //_httpClient.BaseAddress = new Uri("http://10.0.2.2:5195/");
     }
