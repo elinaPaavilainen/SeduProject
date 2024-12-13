@@ -44,7 +44,7 @@ public partial class DeleteUser : ContentPage
         catch
         (Exception ex)
         {
-            InfoLabel.Text = $"Error: {ex.Message}";
+            await DisplayAlert("", "Haullasi ei löytynyt mitään, yritä toista hakusanaa", "OK");
         }
     }
     private async void OnUserTapped(object sender, EventArgs e) 
