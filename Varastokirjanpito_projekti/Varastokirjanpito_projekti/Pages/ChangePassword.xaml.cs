@@ -71,7 +71,7 @@ namespace Varastokirjanpito_projekti.Pages
             } 
             catch (Exception ex) 
             {
-                await DisplayAlert("Error", "Täytä kaikki kentät", "OK"); 
+                await DisplayAlert("Täytä kaikki kentät", "", "OK"); 
             }
         }
         private async void BackToMenu(object sender, EventArgs e)
