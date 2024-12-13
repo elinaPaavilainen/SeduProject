@@ -42,7 +42,7 @@ public partial class ViewHappenings : ContentPage
         catch
         (Exception ex)
         {
-            FoundHappenings.Text = $"Error: {ex.Message}";
+            await DisplayAlert("", "Haullasi ei löytynyt mitään, yritä toista hakusanaa", "OK");
         }
     }
     private async void OnHappeningTapped(object sender, EventArgs e)
