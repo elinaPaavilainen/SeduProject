@@ -20,6 +20,7 @@
 
             <Entry
                 x:Name="Username"
+                Text=""
                 Placeholder="Kirjoita käyttäjätunnus"
                 HorizontalOptions="Center" />
 
@@ -30,6 +31,7 @@
 
             <Entry
                 x:Name="Password"
+                Text=""
                 Placeholder="Kirjoita salasana"
                 IsPassword="True"
                 HorizontalOptions="Center" />
@@ -41,7 +43,7 @@
                 HorizontalOptions="Center" />
 
             <Label
-                x:Name="Tulos"
+                x:Name="InfoLabel"
                 Text=""
                 Style="{StaticResource SubHeadline}"
                 SemanticProperties.HeadingLevel="Level5" />

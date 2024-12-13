@@ -15,43 +15,52 @@ namespace Varastokirjanpito_projekti.Pages
         {
             try
             {
-                string UserNameInput = Username.Text;
-                string PasswordInput = Password.Text;
-                var data = await _apiService.LoginGetUsersControllerDataByUsernameAsync(UserNameInput);
-                // use the data user is the class, and user.something is the object
-                var user = JsonConvert.DeserializeObject<Users>(data);
-                if (user != null)
+                if (Username.Text == "" || Password.Text == "")
                 {
-                    if (PasswordInput == user.Password)
+                    InfoLabel.Text = "Kirjoita käyttäjätunnus ja salasana";
+                }
+                
+                else
+                { 
+                
+                    string UserNameInput = Username.Text;
+                    string PasswordInput = Password.Text;
+                    var data = await _apiService.LoginGetUsersControllerDataByUsernameAsync(UserNameInput);
+                    // use the data user is the class, and user.something is the object
+                    var user = JsonConvert.DeserializeObject<Users>(data);
+                    if (user != null)
                     {
-                        if (user.Admin == true)
+                        if (PasswordInput == user.Password)
                         {
-                            await Navigation.PushAsync(new AdminMenu(user));
-                            Username.Text = "";
-                            Password.Text = "";
+                            if (user.Admin == true)
+                            {
+                                await Navigation.PushAsync(new AdminMenu(user));
+                                Username.Text = "";
+                                Password.Text = "";
+                            }
+                            else
+                            {
+                                await Navigation.PushAsync(new UserMenu(user));
+                                Username.Text = "";
+                                Password.Text = "";
+                                var navigationStack = Navigation.NavigationStack;
+                                var loginPage = navigationStack.FirstOrDefault(page => page is LoginPage);
+                                if (loginPage != null)
+                                {   // if non-admin users signs in, they can't go back to the login page
+                                    Navigation.RemovePage(loginPage);
+                                }
+                            }
                         }
                         else
                         {
-                            await Navigation.PushAsync(new UserMenu(user));
-                            Username.Text = "";
-                            Password.Text = "";
-                            var navigationStack = Navigation.NavigationStack;
-                            var loginPage = navigationStack.FirstOrDefault(page => page is LoginPage); 
-                            if (loginPage != null)
-                            {   // if non-admin users signs in, they can't go back to the login page
-                                Navigation.RemovePage(loginPage); 
-                            }
+                            InfoLabel.Text = "Käyttäjätunnus ja salasana eivät täsmää.";
                         }
-                    }
-                    else
-                    {
-                        Tulos.Text = "Käyttäjätunnus ja salasana eivät täsmää.";
                     }
                 }
             }
             catch (Exception ex) 
             {
-                Tulos.Text = "Yhteysongelma"; 
+                InfoLabel.Text = "Yhteysongelma"; 
             }       
         }
     }
