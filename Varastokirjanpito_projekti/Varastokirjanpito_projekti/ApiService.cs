@@ -19,7 +19,7 @@ public class ApiService
     }
 
     // API requests for BooksController
-    // GET request
+    // GET request Books
     public async Task<IEnumerable<Books>> GetBooksControllerDataAsync()
     {
         var response = await _httpClient.GetAsync("api/Books");
@@ -28,7 +28,7 @@ public class ApiService
         return JsonConvert.DeserializeObject<IEnumerable<Books>>(content);
     }
 
-    // GET by ID
+    // GET by ID Books
     public async Task<string> GetBooksControllerDataByIdAsync(int id)
     {
         var response = await _httpClient.GetAsync($"api/Books/{id}");
@@ -36,7 +36,7 @@ public class ApiService
         return await response.Content.ReadAsStringAsync();
     }
 
-    //GET, search
+    //GET, search Books
     public async Task<IEnumerable<Books>> SearchBooksAsync(string query)
     {
         var response = await _httpClient.GetAsync($"api/Books/search/{query}");
@@ -45,7 +45,7 @@ public class ApiService
         return JsonConvert.DeserializeObject<IEnumerable<Books>>(content);
     }
 
-    // POST request
+    // POST request Books
     public async Task<string> PostBooksControllerDataAsync(object data)
     {
         var content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
@@ -54,7 +54,7 @@ public class ApiService
         return await response.Content.ReadAsStringAsync();
     }
 
-    // PUT request
+    // PUT request Books
     public async Task<string> PutBooksControllerDataAsync(int id, object data)
     {
         try
@@ -79,7 +79,7 @@ public class ApiService
         }
     }
 
-    // DELETE request
+    // DELETE request Books
     public async Task<string> DeleteBooksControllerDataAsync(int id)
     {
         var response = await _httpClient.DeleteAsync($"api/Books/{id}");
@@ -88,7 +88,7 @@ public class ApiService
     }
 
     // API requests for UsersController
-    // GET request
+    // GET request Users
     public async Task<IEnumerable<Users>> GetUsersControllerDataAsync()
     {
         var response = await _httpClient.GetAsync("api/Users");
@@ -97,7 +97,7 @@ public class ApiService
         return JsonConvert.DeserializeObject<IEnumerable<Users>>(json); 
     }
 
-    // GET by username
+    // GET by username Users
     public async Task<string> LoginGetUsersControllerDataByUsernameAsync(string username)
     {
         var response = await _httpClient.GetAsync($"api/Users/{username}");
@@ -105,7 +105,7 @@ public class ApiService
         return await response.Content.ReadAsStringAsync();
     }
 
-    // GET list by username
+    // GET list by username Users
     public async Task<Users> GetUsersControllerDataByUsernameAsync(string username) 
     {
         var response = await _httpClient.GetAsync($"api/Users/{username}");
@@ -114,7 +114,7 @@ public class ApiService
         return JsonConvert.DeserializeObject<Users>(json); 
     }
 
-    //GET, search
+    //GET, search Users
     public async Task<IEnumerable<Users>> SearchUsersAsync(string query)
     {
         var response = await _httpClient.GetAsync($"api/Users/search/{query}");
@@ -123,7 +123,7 @@ public class ApiService
         return JsonConvert.DeserializeObject<IEnumerable<Users>>(content);
     }
 
-    // POST request
+    // POST request Users
     public async Task<string> PostUsersControllerDataAsync(object data)
     {
         var content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
@@ -132,7 +132,7 @@ public class ApiService
         return await response.Content.ReadAsStringAsync();
     }
 
-    // PUT request
+    // PUT request Users
     public async Task<string> PutUsersControllerDataAsync(int id, object data)
     {
         var content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
@@ -141,7 +141,7 @@ public class ApiService
         return await response.Content.ReadAsStringAsync();
     }
 
-    // DELETE request
+    // DELETE request Users
 
     public async Task<bool> DeleteUsersControllerDataAsync(string username) 
     {
@@ -151,7 +151,7 @@ public class ApiService
     }
 
     //API REQUEST FOR DeletedInformation
-    //POST LOG DELETED
+    //POST LOG Deleted_books
     public async Task LogDeletionAsync(string deletedBy, string authorAndTitle, string lossOrSold, string notes)
     {
         var deletionRecord = new
@@ -166,7 +166,7 @@ public class ApiService
         var response = await _httpClient.PostAsync("api/DeleteLog", content);
         response.EnsureSuccessStatusCode(); // Ensure the request was successful
     }
-    //GET LOG DELETED
+    //GET LOG Deleted_books
     public async Task<IEnumerable<Deleted_books>> GetDeletedBooksDataAsync()
     {
         var response = await _httpClient.GetAsync("api/DeleteLog");
@@ -174,7 +174,7 @@ public class ApiService
         var content = await response.Content.ReadAsStringAsync();
         return JsonConvert.DeserializeObject<IEnumerable<Deleted_books>>(content);
     }
-    //GET, SEARCH LOG DELETED
+    //GET, SEARCH LOG Deleted_books
     public async Task<IEnumerable<Deleted_books>> SearchDeletedBooksAsync(string query)
     {
         var response = await _httpClient.GetAsync($"api/DeleteLog/search/{query}");

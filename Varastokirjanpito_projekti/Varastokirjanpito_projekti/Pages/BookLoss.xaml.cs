@@ -19,6 +19,7 @@ namespace Varastokirjanpito_projekti.Pages
 
         private async void DeleteBook(object sender, EventArgs e)
         {
+            //create timestamp
             DateTime now = DateTime.Now;
             string timestamp = now.ToString("dd.MM.yyyy HH:mm");
 
@@ -28,7 +29,7 @@ namespace Varastokirjanpito_projekti.Pages
                 {
                     int LoosedCount = int.Parse(LossCount.Text);
 
-                    if (_book.Count > LoosedCount)
+                    if (_book.Count > LoosedCount) // if there are more books on stack than the user deletes, use the PUT method
                     {
                         _book.Count -= LoosedCount;
                         await _apiService.PutBooksControllerDataAsync(_book.Id, _book);
@@ -38,17 +39,16 @@ namespace Varastokirjanpito_projekti.Pages
                         await Navigation.PushAsync(new Products(_user));
                     }
 
-                    else if (_book.Count < LoosedCount)
+                    else if (_book.Count < LoosedCount) // if there are less books on stack than the user tries to delete, wont't work
                     {
                         await DisplayAlert("", "Kirjoja ei ole varastossa tarpeeksi.", "OK");
                     }
 
-                    else
+                    else    //if the amount user want's to delete is the same as the count, use the DELETE method
                     {
                         var response = await _apiService.DeleteBooksControllerDataAsync(_book.Id);
                         if (response != null)
                         {
-                            //LogDeletionAsync(int id, string deletedBy, string authorAndTitle, string lossOrSold, string notes)
                             await _apiService.LogDeletionAsync(_user.Username, $"{_book.Author}: {_book.Title}", $"Hävikkiin {LoosedCount} kpl, {timestamp} ", $"{Notes.Text}");
                             await DisplayAlert("", "Kirja poistettu.", "OK");
                             Notes.Text = "";

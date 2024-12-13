@@ -37,8 +37,8 @@ namespace Varastokirjanpito_projekti.Pages
                             Password.Text = "";
                             var navigationStack = Navigation.NavigationStack;
                             var loginPage = navigationStack.FirstOrDefault(page => page is LoginPage); 
-                            if (loginPage != null) 
-                            {
+                            if (loginPage != null)
+                            {   // if non-admin users signs in, they can't go back to the login page
                                 Navigation.RemovePage(loginPage); 
                             }
                         }

@@ -15,6 +15,7 @@ public partial class AddProduct : ContentPage
 	}
     private async void ProductAdded(object sender, EventArgs e)
     {
+        //Create timestamp
         DateTime now = DateTime.Now;
         string timestamp = now.ToString("dd.MM.yyyy HH:mm");
         try 
@@ -24,12 +25,12 @@ public partial class AddProduct : ContentPage
             Author = Author.Text,
             Title = Title.Text,
             Count = int.Parse(ProductCount.Text),
-            Price = float.Parse(ProductPrice.Text.Replace(',', '.'), CultureInfo.InvariantCulture)
+            Price = float.Parse(ProductPrice.Text.Replace(',', '.'), CultureInfo.InvariantCulture) //doesn't matter if user uses . or , in price
         };
             try
             {
                 var result = _apiService.PostBooksControllerDataAsync(data);
-                await _apiService.LogDeletionAsync(_user.Username, $"{Author.Text}: {Title.Text}", $"Lisätty, {timestamp}", AdditionalInfo.Text);
+                await _apiService.LogDeletionAsync(_user.Username, $"{Author.Text}: {Title.Text}", $"Lisätty, {timestamp}", AdditionalInfo.Text); // Log the adding to database table
                 await DisplayAlert("", "Kirja lisätty.", "OK");
 
                 Author.Text = "";

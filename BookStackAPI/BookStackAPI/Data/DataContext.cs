@@ -12,7 +12,7 @@ namespace BookStackAPI.Data
         public DbSet<Users> Users { get; set; }
         public DbSet<Deleted_books> Deleted_books { get; set; }   
         protected override void OnModelCreating(ModelBuilder modelBuilder) 
-        {
+        { // ID to autoincrement primary key
             modelBuilder.Entity<Books>()
                 .HasKey(b => b.Id); 
             modelBuilder.Entity<Books>()

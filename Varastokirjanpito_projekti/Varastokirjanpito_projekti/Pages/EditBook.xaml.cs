@@ -18,7 +18,7 @@ namespace Varastokirjanpito_projekti.Pages
         }
 
         private async void SaveChanges(object sender, EventArgs e)
-        {
+        {   // create timestamp
             DateTime now = DateTime.Now;
             string timestamp = now.ToString("dd.MM.yyyy HH:mm");
 

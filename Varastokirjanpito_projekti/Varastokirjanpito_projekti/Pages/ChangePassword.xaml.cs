@@ -21,19 +21,19 @@ namespace Varastokirjanpito_projekti.Pages
                 string NewPasswordInput = NewPassword.Text; 
                 string NewPasswordInputAgain = NewPasswordAgain.Text;
 
-
+                // Password requirements
                 if (NewPasswordInput.Length < 8 || !Regex.IsMatch(NewPasswordInput, @"^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[\W_]).+$"))
                 {
                     await DisplayAlert("", "Salasana täytyy olla vähintään 8 merkkiä pitkä ja sisältää vähintään yhden ison kirjaimen, pienen kirjaimen, numeron ja erikoismerkin.", "OK");
                 }
-                else if (OldPasswordInput == NewPasswordInput)
+                else if (OldPasswordInput == NewPasswordInput) //New can't be the same as the old
                 {
                     await DisplayAlert("", "Uusi salasana täytyy olla eri kuin vanha.", "OK");
                 }
 
                 else
                 {
-
+                    // Check if all the requirements are met
                     if (OldPasswordInput == _user.Password && NewPasswordInput == NewPasswordInputAgain)
                     {
                         _user.Password = NewPasswordInput;

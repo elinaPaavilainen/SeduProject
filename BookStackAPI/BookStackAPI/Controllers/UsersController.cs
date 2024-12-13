@@ -24,7 +24,6 @@ namespace BookStackAPI.Controllers
         public async Task<ActionResult<Users>> GetUser(string username)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
-            //var user = await _context.Users.FindAsync(username);
             if (user == null)
             {
                 return NotFound();
