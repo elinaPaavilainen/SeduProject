@@ -50,7 +50,7 @@ public partial class DeleteUser : ContentPage
     private async void OnUserTapped(object sender, EventArgs e) 
     {
         var user = (Users)((TappedEventArgs)e).Parameter;
-        bool answer = await DisplayAlert("Poista käyttäjä", $"Haluatko poistaa käyttäjän {user.Username}?", "Kyllä", "Peruuta");
+        bool answer = await DisplayAlert("", $"Haluatko poistaa käyttäjän {user.Username}?", "Kyllä", "Peruuta");
         if (answer) 
         {
             try 

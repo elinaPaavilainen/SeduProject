@@ -41,7 +41,7 @@ public partial class AddProduct : ContentPage
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Error", $"Tallennus epäonnistui: {ex.Message}", "OK");
+                await DisplayAlert("", $"Tallennus epäonnistui: {ex.Message}", "OK");
             }
         }
         catch

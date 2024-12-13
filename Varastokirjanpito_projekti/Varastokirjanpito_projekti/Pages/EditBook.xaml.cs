@@ -33,12 +33,12 @@ namespace Varastokirjanpito_projekti.Pages
                 }
                 else
                 {
-                    await DisplayAlert("Error", "Tietojen päivitys epäonnistui", "OK");
+                    await DisplayAlert("", "Tietojen päivitys epäonnistui", "OK");
                 }
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Error", $"Odottamaton tapahtuma: {ex.Message}", "OK");
+                await DisplayAlert("", $"Odottamaton tapahtuma: {ex.Message}", "OK");
             }
         }
     }
