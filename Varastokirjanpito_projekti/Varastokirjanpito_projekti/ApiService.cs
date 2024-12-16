@@ -13,7 +13,8 @@ public class ApiService
             MaxConnectionsPerServer = 1, AllowAutoRedirect = true 
         });
 
-        _httpClient.BaseAddress = new Uri("http://10.6.128.105:5195/");
+        //put you ip address in the place of "ip-address", also Resources -> xml -> network_security_config.xml
+        _httpClient.BaseAddress = new Uri("http://ip-address:5195/");
         //_httpClient.BaseAddress = new Uri("://localhost:5195/)";
         //_httpClient.BaseAddress = new Uri("http://10.0.2.2:5195/");
     }
